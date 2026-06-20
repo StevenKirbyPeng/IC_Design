@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>數位 IC、類比 IC 與出路比較整理</title>
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", Arial, sans-serif;
+      line-height: 1.8;
+      background: #f5f7fb;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(135deg, #1f3c88, #2f80ed);
+      color: white;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+    header p {
+      margin-top: 10px;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px 40px;
+    }
+    section {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    h2 {
+      color: #1f3c88;
+      border-left: 6px solid #2f80ed;
+      padding-left: 12px;
+      margin-top: 0;
+    }
+    h3 {
+      color: #333;
+      margin-top: 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    th {
+      background: #1f3c88;
+      color: white;
+      padding: 12px;
+      text-align: left;
+    }
+    td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      vertical-align: top;
+    }
+    tr:nth-child(even) {
+      background: #f8faff;
+    }
+    .highlight {
+      background: #fff7d6;
+      border-left: 6px solid #f2c94c;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+    .conclusion {
+      background: #eaf4ff;
+      border-left: 6px solid #2f80ed;
+      padding: 16px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 16px;
+    }
+    ul {
+      padding-left: 24px;
+    }
+    .tag {
+      display: inline-block;
+      background: #eaf4ff;
+      color: #1f3c88;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin: 4px 4px 4px 0;
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin: 18px 0;
+    }
+    .visual-card {
+      background: #f8faff;
+      border: 1px solid #dbe8ff;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .visual-card svg {
+      max-width: 100%;
+      height: auto;
+    }
+    .visual-card h3 {
+      margin-top: 8px;
+      color: #1f3c88;
+    }
+    .flowchart {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 18px 0;
+    }
+    .flow-step {
+      background: #eaf4ff;
+      border: 2px solid #2f80ed;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-weight: bold;
+      color: #1f3c88;
+      min-width: 120px;
+      text-align: center;
+    }
+    .flow-arrow {
+      font-size: 24px;
+      color: #2f80ed;
+      font-weight: bold;
+    }
+    .note-box {
+      background: #f2fbf5;
+      border-left: 6px solid #27ae60;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      padding: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>數位 IC、類比 IC 與出路比較整理</h1>
+  <p>根據課程描述、課程進度與就業方向整理</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>補充圖解：數位 IC 與類比 IC 的差異</h2>
+
+    <div class="visual-grid">
+      <div class="visual-card">
+        <svg viewBox="0 0 360 220" role="img" aria-label="Digital IC illustration">
+          <rect x="25" y="35" width="310" height="150" rx="16" fill="#eaf4ff" stroke="#2f80ed" stroke-width="3"/>
+          <rect x="60" y="75" width="70" height="50" rx="8" fill="#ffffff" stroke="#1f3c88" stroke-width="2"/>
+          <text x="95" y="105" text-anchor="middle" font-size="16" fill="#1f3c88">AND</text>
+          <rect x="150" y="75" width="70" height="50" rx="8" fill="#ffffff" stroke="#1f3c88" stroke-width="2"/>
+          <text x="185" y="105" text-anchor="middle" font-size="16" fill="#1f3c88">FF</text>
+          <rect x="240" y="75" width="70" height="50" rx="8" fill="#ffffff" stroke="#1f3c88" stroke-width="2"/>
+          <text x="275" y="105" text-anchor="middle" font-size="16" fill="#1f3c88">CPU</text>
+          <line x1="130" y1="100" x2="150" y2="100" stroke="#2f80ed" stroke-width="3"/>
+          <line x1="220" y1="100" x2="240" y2="100" stroke="#2f80ed" stroke-width="3"/>
+          <text x="180" y="160" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f3c88">Digital IC</text>
+        </svg>
+        <h3>數位 IC</h3>
+        <p>重點是邏輯閘、暫存器、FSM、CPU、Cache、RTL 與 Synthesis。</p>
+      </div>
+
+      <div class="visual-card">
+        <svg viewBox="0 0 360 220" role="img" aria-label="Analog IC illustration">
+          <rect x="25" y="35" width="310" height="150" rx="16" fill="#fff7d6" stroke="#f2c94c" stroke-width="3"/>
+          <path d="M45 120 C80 70, 120 70, 155 120 S230 170, 265 120 S320 70, 345 120" fill="none" stroke="#b7791f" stroke-width="4"/>
+          <circle cx="90" cy="100" r="18" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <circle cx="180" cy="120" r="18" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <circle cx="270" cy="100" r="18" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <text x="180" y="160" text-anchor="middle" font-size="18" font-weight="bold" fill="#8a5a00">Analog IC</text>
+        </svg>
+        <h3>類比 IC</h3>
+        <p>重點是放大器、電流鏡、OP、ADC/DAC、PLL、雜訊與頻寬。</p>
+      </div>
+    </div>
+
+    <div class="note-box">
+      圖解重點：數位 IC 主要處理 0/1 邏輯與時序；類比 IC 主要處理連續訊號、增益、頻寬、雜訊與偏壓。
+    </div>
+  </section>
+
+
+  <section>
+    <h2>一、CMOS VLSI Full-Custom Design 課程判斷</h2>
+
+    <p>
+      這門課程內容包含 Full-Custom Design、CMOS VLSI、元件、電晶體、邏輯與系統層面，
+      也包含模擬、佈局、寄生參數萃取以及佈局後驗證。
+    </p>
+
+    <div class="conclusion">
+      結論：這門課是「數位 IC 為主的 Full-Custom CMOS VLSI 設計課」，不是純類比 IC。
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>判斷依據</th>
+          <th>說明</th>
+          <th>偏向</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Full-Custom Design</td>
+          <td>數位與類比都可能使用 full-custom，但本課後續主題偏 CMOS 邏輯設計。</td>
+          <td>數位 / 類比皆可能</td>
+        </tr>
+        <tr>
+          <td>CMOS VLSI</td>
+          <td>通常是數位積體電路設計的核心課程。</td>
+          <td>數位 IC</td>
+        </tr>
+        <tr>
+          <td>Logic、System 層面</td>
+          <td>明顯與數位邏輯、數位系統設計相關。</td>
+          <td>數位 IC</td>
+        </tr>
+        <tr>
+          <td>Speed、Power</td>
+          <td>速度與功耗是數位 VLSI 設計的重要最佳化目標。</td>
+          <td>數位 IC</td>
+        </tr>
+        <tr>
+          <td>Sequencing</td>
+          <td>通常指 latch、flip-flop、register、clocking 等時序電路。</td>
+          <td>數位 IC</td>
+        </tr>
+        <tr>
+          <td>Circuit Families</td>
+          <td>常見內容包含 Static CMOS、Dynamic CMOS、Domino Logic、Pass Transistor Logic。</td>
+          <td>數位 IC</td>
+        </tr>
+        <tr>
+          <td>Memories</td>
+          <td>通常包含 SRAM、DRAM、ROM、Memory Cell 等。</td>
+          <td>數位 IC</td>
+        </tr>
+      </tbody>
+    </table>
+
+    
+    <h3>Full-Custom CMOS VLSI 設計流程圖</h3>
+    <div class="flowchart">
+      <div class="flow-step">規格定義</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">電路設計</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Pre-Sim</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Layout</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">PEX</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Post-Sim</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">驗證完成</div>
+    </div>
+    <div class="note-box">
+      這個流程對應課程提到的「模擬、佈局、雜散參數萃取、佈局後驗證」，因此它是偏底層的 full-custom 設計訓練。
+    </div>
+
+    <p>
+      可以理解成：用電晶體與 layout 的角度設計數位 CMOS 電路，例如 inverter、NAND、NOR、
+      latch、flip-flop、memory cell 等。
+    </p>
+  </section>
+
+  <section>
+    <h2>二、VLSI System Design 課程判斷</h2>
+
+    <p>
+      這門課明確提到 Verilog、Combinational Logic、Sequential Logic、Non-Pipelined CPU、
+      Pipelined CPU、Cache、Synthesis、Simulation、Verification、DFT。
+    </p>
+
+    <div class="conclusion">
+      結論：VLSI System Design 是 100% 數位 IC / 數位 VLSI 系統設計。
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>課程內容</th>
+          <th>判斷</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Verilog HDL</td>
+          <td>數位 IC / RTL 設計核心工具</td>
+        </tr>
+        <tr>
+          <td>Combinational & Sequential Logic</td>
+          <td>數位邏輯基礎</td>
+        </tr>
+        <tr>
+          <td>FSM Controller</td>
+          <td>數位控制電路</td>
+        </tr>
+        <tr>
+          <td>Non-Pipelined CPU</td>
+          <td>數位系統設計</td>
+        </tr>
+        <tr>
+          <td>Pipelined CPU</td>
+          <td>數位系統與電腦架構</td>
+        </tr>
+        <tr>
+          <td>Cache Memory</td>
+          <td>數位 IC / 記憶體系統</td>
+        </tr>
+        <tr>
+          <td>Synthesis / Optimization</td>
+          <td>數位 IC 設計流程</td>
+        </tr>
+        <tr>
+          <td>Simulation / Verification</td>
+          <td>數位驗證</td>
+        </tr>
+        <tr>
+          <td>Testing / DFT</td>
+          <td>數位 IC 測試設計</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>VLSI System Design / RTL 設計流程圖</h3>
+    <div class="flowchart">
+      <div class="flow-step">系統規格</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">RTL / Verilog</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Simulation</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Synthesis</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Optimization</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Testing / DFT</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Project</div>
+    </div>
+    <div class="note-box">
+      這個流程對應 Verilog、CPU、pipeline、cache、synthesis 與 verification，因此明顯是數位 IC / RTL 系統設計。
+    </div>
+
+  </section>
+
+  <section>
+    <h2>三、兩門課的差異</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>課程</th>
+          <th>主要方向</th>
+          <th>學習重點</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CMOS VLSI Full-Custom Design</td>
+          <td>數位 IC，但偏底層電晶體與 layout</td>
+          <td>CMOS、layout、delay、power、circuit families、memory</td>
+        </tr>
+        <tr>
+          <td>VLSI System Design</td>
+          <td>數位 IC，偏 RTL / 系統設計</td>
+          <td>Verilog、CPU、pipeline、cache、synthesis、verification</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      簡單說：前者比較像「用電晶體做數位電路」，後者比較像「用 Verilog 做數位系統」。
+    </div>
+  </section>
+
+  <section>
+    <h2>四、IC 領域出路比較</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>領域</th>
+          <th>出路</th>
+          <th>職缺數量</th>
+          <th>薪資潛力</th>
+          <th>入門難度</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>數位 IC 設計</td>
+          <td>★★★★★</td>
+          <td>★★★★★</td>
+          <td>★★★★★</td>
+          <td>★★★★</td>
+        </tr>
+        <tr>
+          <td>數位 IC 驗證</td>
+          <td>★★★★★</td>
+          <td>★★★★★</td>
+          <td>★★★★</td>
+          <td>★★★</td>
+        </tr>
+        <tr>
+          <td>實體設計 PD</td>
+          <td>★★★★★</td>
+          <td>★★★★★</td>
+          <td>★★★★</td>
+          <td>★★★</td>
+        </tr>
+        <tr>
+          <td>DFT</td>
+          <td>★★★★</td>
+          <td>★★★★</td>
+          <td>★★★★</td>
+          <td>★★★</td>
+        </tr>
+        <tr>
+          <td>類比 IC 設計</td>
+          <td>★★★★★</td>
+          <td>★★</td>
+          <td>★★★★★</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td>RF IC 設計</td>
+          <td>★★★★★</td>
+          <td>★</td>
+          <td>★★★★★+</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td>製程整合</td>
+          <td>★★★★</td>
+          <td>★★★★</td>
+          <td>★★★★</td>
+          <td>★★★</td>
+        </tr>
+        <tr>
+          <td>設備工程師</td>
+          <td>★★★</td>
+          <td>★★★★★</td>
+          <td>★★★</td>
+          <td>★★</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>出路選擇流程圖</h3>
+    <div class="flowchart">
+      <div class="flow-step">想要職缺多</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">數位 IC / 驗證 / PD</div>
+      <div class="flow-arrow">　</div>
+      <div class="flow-step">想要高薪高門檻</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">類比 IC / RF IC</div>
+      <div class="flow-arrow">　</div>
+      <div class="flow-step">喜歡 Verilog</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">RTL / CPU / ASIC</div>
+    </div>
+    <div class="note-box">
+      如果目標是「比較好找工作」，數位 IC、數位驗證與實體設計通常比類比 IC 更容易找到大量職缺。
+    </div>
+
+  </section>
+
+  <section>
+    <h2>五、如果目標是比較好找工作</h2>
+
+    <h3>首選：數位 IC 設計 / 數位 IC 驗證</h3>
+
+    <p>原因：</p>
+    <ul>
+      <li>職缺最多</li>
+      <li>和 Verilog、FPGA、CPU、VLSI System Design 關聯最大</li>
+      <li>容易銜接碩士研究與業界職缺</li>
+      <li>AI chip、NPU、ASIC、SoC 需求仍然高</li>
+    </ul>
+
+    <p>相關技能：</p>
+    <span class="tag">Verilog</span>
+    <span class="tag">SystemVerilog</span>
+    <span class="tag">RTL Design</span>
+    <span class="tag">FPGA</span>
+    <span class="tag">ASIC</span>
+    <span class="tag">Computer Architecture</span>
+    <span class="tag">Synthesis</span>
+    <span class="tag">Verification</span>
+
+    <div class="conclusion">
+      如果以「就業穩定、職缺多、發展性好」來看，數位 IC 是最推薦的方向。
+    </div>
+  </section>
+
+  <section>
+    <h2>六、如果目標是最高薪</h2>
+
+    <h3>首選：類比 IC / RF IC</h3>
+
+    <p>優點：</p>
+    <ul>
+      <li>人才稀少</li>
+      <li>技術門檻高</li>
+      <li>高階工程師薪資潛力很高</li>
+      <li>不容易被自動化完全取代</li>
+    </ul>
+
+    <p>缺點：</p>
+    <ul>
+      <li>入門難度最高</li>
+      <li>職缺數量比數位 IC 少</li>
+      <li>需要很強的電路直覺與半導體元件觀念</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>七、整體建議</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>目標</th>
+          <th>建議方向</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>最好找工作</td>
+          <td>數位 IC 設計、數位 IC 驗證、實體設計 PD</td>
+        </tr>
+        <tr>
+          <td>最高薪但最難</td>
+          <td>類比 IC、RF IC</td>
+        </tr>
+        <tr>
+          <td>和 Verilog / FPGA 最接近</td>
+          <td>數位 IC 設計、VLSI System Design</td>
+        </tr>
+        <tr>
+          <td>和 Virtuoso / Layout 最接近</td>
+          <td>Full-Custom CMOS VLSI、類比 IC</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="conclusion">
+      對目前已有 FPGA、Verilog、數位電路背景的人來說，最自然且出路最廣的選擇是：數位 IC 設計 + VLSI System Design + CPU / FPGA / ASIC 方向。
+    </div>
+  </section>
+
+
+  <section>
+    <h2>補充：類比 IC 課程範例</h2>
+
+    <p>
+      類比 IC 課程通常和前面的 Digital IC / VLSI System Design 不同，重點不是 Verilog、CPU 或 Synthesis，
+      而是從 MOSFET 小訊號模型、偏壓電路、放大器、電流鏡、差動對、頻率響應、回授與 OP Amp 開始，
+      最後進入 ADC、DAC、PLL、LDO、Bandgap Reference 等類比積體電路設計。
+    </p>
+
+    <div class="visual-grid">
+      <div class="visual-card">
+        <svg viewBox="0 0 420 250" role="img" aria-label="Analog IC blocks">
+          <rect x="25" y="30" width="370" height="180" rx="18" fill="#fff7d6" stroke="#f2c94c" stroke-width="3"/>
+          <rect x="55" y="75" width="85" height="50" rx="8" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <text x="97" y="105" text-anchor="middle" font-size="14" fill="#8a5a00">Bias</text>
+          <rect x="165" y="75" width="85" height="50" rx="8" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <text x="207" y="105" text-anchor="middle" font-size="14" fill="#8a5a00">Amp</text>
+          <rect x="275" y="75" width="85" height="50" rx="8" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <text x="317" y="105" text-anchor="middle" font-size="14" fill="#8a5a00">OP</text>
+          <line x1="140" y1="100" x2="165" y2="100" stroke="#b7791f" stroke-width="3"/>
+          <line x1="250" y1="100" x2="275" y2="100" stroke="#b7791f" stroke-width="3"/>
+          <path d="M60 165 C90 135, 120 135, 150 165 S210 195, 240 165 S300 135, 335 165" fill="none" stroke="#b7791f" stroke-width="4"/>
+          <text x="210" y="225" text-anchor="middle" font-size="18" font-weight="bold" fill="#8a5a00">Analog IC Design</text>
+        </svg>
+        <h3>類比 IC 圖解</h3>
+        <p>處理連續訊號，重點是增益、頻寬、雜訊、線性度、穩定度與功耗。</p>
+      </div>
+
+      <div class="visual-card">
+        <svg viewBox="0 0 420 250" role="img" aria-label="Analog waveform">
+          <rect x="25" y="30" width="370" height="180" rx="18" fill="#f2fbf5" stroke="#27ae60" stroke-width="3"/>
+          <line x1="50" y1="130" x2="370" y2="130" stroke="#555" stroke-width="2"/>
+          <line x1="70" y1="50" x2="70" y2="200" stroke="#555" stroke-width="2"/>
+          <path d="M70 130 C105 50, 145 50, 180 130 S255 210, 290 130 S345 50, 370 100" fill="none" stroke="#27ae60" stroke-width="4"/>
+          <text x="210" y="225" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e7e43">Continuous Signal</text>
+        </svg>
+        <h3>連續訊號</h3>
+        <p>類比 IC 不是只看 0/1，而是分析波形大小、頻率、相位、雜訊與失真。</p>
+      </div>
+    </div>
+
+    <h3>類比 IC 典型課程內容</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>主題</th>
+          <th>學習內容</th>
+          <th>常見電路</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>MOSFET 元件模型</td>
+          <td>大訊號模型、小訊號模型、gm、ro、body effect</td>
+          <td>NMOS / PMOS</td>
+        </tr>
+        <tr>
+          <td>偏壓電路</td>
+          <td>建立穩定工作點，控制電流與電壓</td>
+          <td>Current Mirror、Bias Network</td>
+        </tr>
+        <tr>
+          <td>單級放大器</td>
+          <td>分析增益、輸入阻抗、輸出阻抗、頻寬</td>
+          <td>Common Source、Common Gate、Source Follower</td>
+        </tr>
+        <tr>
+          <td>差動放大器</td>
+          <td>差動訊號、共模訊號、CMRR、active load</td>
+          <td>Differential Pair</td>
+        </tr>
+        <tr>
+          <td>頻率響應</td>
+          <td>極點、零點、頻寬、相位裕度</td>
+          <td>Amplifier Frequency Response</td>
+        </tr>
+        <tr>
+          <td>回授與穩定度</td>
+          <td>Negative Feedback、Loop Gain、Stability</td>
+          <td>Feedback Amplifier</td>
+        </tr>
+        <tr>
+          <td>運算放大器</td>
+          <td>兩級 OP、補償、增益、頻寬、slew rate</td>
+          <td>OP Amp</td>
+        </tr>
+        <tr>
+          <td>資料轉換器與特殊電路</td>
+          <td>類比與數位訊號轉換、時脈與電源管理</td>
+          <td>ADC、DAC、PLL、LDO、Bandgap</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>類比 IC 設計流程圖</h3>
+    <div class="flowchart">
+      <div class="flow-step">規格定義</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">手算設計</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">電路模擬</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">版圖 Layout</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">DRC / LVS</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">PEX</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Post-Sim</div>
+    </div>
+
+    <div class="note-box">
+      類比 IC 的核心能力是「看得懂電晶體如何影響真實波形」，所以比數位 IC 更重視元件模型、電路直覺、layout matching、雜訊、頻寬與穩定度。
+    </div>
+  </section>
+
+
+
+  <section>
+    <h2>補充：數位 IC 與類比 IC 工作技術流程圖</h2>
+
+    <h3>數位 IC 工作技術流程圖</h3>
+    <div class="flowchart">
+      <div class="flow-step">需求 / 規格</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">架構設計</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">RTL / Verilog</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">功能驗證</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Synthesis</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">STA 時序分析</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Physical Design</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">DRC / LVS</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Tape-out</div>
+    </div>
+
+    <div class="note-box">
+      數位 IC 工作重點通常是 RTL 設計、功能驗證、邏輯合成、時序收斂、功耗最佳化與實體設計。
+      常用技能包含 Verilog、SystemVerilog、UVM、Synthesis、STA、Floorplan、Place & Route。
+    </div>
+
+    <h3>類比 IC 工作技術流程圖</h3>
+    <div class="flowchart">
+      <div class="flow-step">規格 / 指標</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">電路架構</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">手算設計</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Pre-Sim</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Layout Matching</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">DRC / LVS</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">PEX</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Post-Sim</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Tape-out</div>
+    </div>
+
+    <div class="note-box">
+      類比 IC 工作重點通常是電晶體尺寸設計、偏壓、增益、頻寬、雜訊、穩定度、layout matching、
+      parasitic effect 與 post-layout simulation。
+      常用技能包含 Virtuoso、Spectre、DRC、LVS、PEX、OP Amp、Bandgap、LDO、PLL、ADC/DAC。
+    </div>
+
+    <h3>數位 IC 與類比 IC：相同與相異比較表</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>比較項目</th>
+          <th>數位 IC</th>
+          <th>類比 IC</th>
+          <th>相同 / 相異</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>主要訊號</td>
+          <td>0 / 1 邏輯訊號</td>
+          <td>連續電壓、連續電流、波形訊號</td>
+          <td>相異</td>
+        </tr>
+        <tr>
+          <td>核心設計目標</td>
+          <td>功能正確、時序達標、面積小、功耗低</td>
+          <td>增益、頻寬、雜訊、線性度、穩定度、功耗</td>
+          <td>相異</td>
+        </tr>
+        <tr>
+          <td>常見電路</td>
+          <td>Logic Gate、Register、FSM、CPU、Cache、SRAM</td>
+          <td>Current Mirror、Amplifier、OP Amp、PLL、ADC、DAC、LDO</td>
+          <td>相異</td>
+        </tr>
+        <tr>
+          <td>常用語言 / 工具</td>
+          <td>Verilog、SystemVerilog、UVM、Synthesis、STA、P&R</td>
+          <td>Virtuoso、Spectre、ADE、DRC、LVS、PEX</td>
+          <td>相異</td>
+        </tr>
+        <tr>
+          <td>模擬方式</td>
+          <td>功能模擬、Gate-level Simulation、Timing Simulation</td>
+          <td>DC、AC、Transient、Noise、Monte Carlo、Corner Simulation</td>
+          <td>相異</td>
+        </tr>
+        <tr>
+          <td>版圖重點</td>
+          <td>Placement、Routing、Clock Tree、Timing Closure</td>
+          <td>Matching、Symmetry、Guard Ring、寄生效應控制</td>
+          <td>相異</td>
+        </tr>
+        <tr>
+          <td>都需要考慮</td>
+          <td>面積、速度、功耗、製程角落、可靠度</td>
+          <td>面積、速度、功耗、製程角落、可靠度</td>
+          <td>相同</td>
+        </tr>
+        <tr>
+          <td>都會做的驗證</td>
+          <td>DRC、LVS、PEX、Post-layout Check</td>
+          <td>DRC、LVS、PEX、Post-layout Check</td>
+          <td>相同</td>
+        </tr>
+        <tr>
+          <td>入門門檻</td>
+          <td>較容易從 Verilog / FPGA / 數位邏輯入門</td>
+          <td>較需要電路學、電子學、半導體元件與電路直覺</td>
+          <td>相異</td>
+        </tr>
+        <tr>
+          <td>職缺數量</td>
+          <td>通常較多，包含 RTL、驗證、PD、DFT</td>
+          <td>通常較少，但高階人才稀缺</td>
+          <td>相異</td>
+        </tr>
+        <tr>
+          <td>適合的人</td>
+          <td>喜歡邏輯、架構、程式、CPU、硬體描述語言的人</td>
+          <td>喜歡電晶體、波形、放大器、layout 細節的人</td>
+          <td>相異</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="conclusion">
+      總結：數位 IC 比較像「用硬體描述語言與流程工具設計大型邏輯系統」；
+      類比 IC 比較像「用電晶體與版圖技巧控制真實連續訊號」。
+      兩者都屬於 IC 設計，也都需要理解製程、功耗、面積、驗證與 layout，但技術核心不同。
+    </div>
+  </section>
+
+
+
+  <section>
+    <h2>補充：EDA 在數位 IC 與類比 IC 的工作技術流程圖</h2>
+
+    <p>
+      EDA 是 Electronic Design Automation，也就是「電子設計自動化工具」。
+      它本身不是單純數位 IC，也不是單純類比 IC，而是支援 IC 設計流程的軟體工具與自動化技術。
+      數位 IC、類比 IC、Full-Custom IC、SoC、Memory 設計都會使用 EDA。
+    </p>
+
+    <h3>EDA 與數位 IC、類比 IC 的關係圖</h3>
+    <div class="flowchart">
+      <div class="flow-step">EDA 工具</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">數位 IC 流程</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">RTL / Synthesis / STA / P&R / DFT</div>
+      <div class="flow-arrow">　</div>
+      <div class="flow-step">EDA 工具</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">類比 IC 流程</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">SPICE / Layout / DRC / LVS / PEX</div>
+    </div>
+
+    <div class="visual-grid">
+      <div class="visual-card">
+        <svg viewBox="0 0 520 300" role="img" aria-label="EDA digital IC workflow">
+          <rect x="20" y="30" width="480" height="220" rx="18" fill="#eaf4ff" stroke="#2f80ed" stroke-width="3"/>
+          <text x="260" y="62" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f3c88">EDA for Digital IC</text>
+
+          <rect x="45" y="95" width="80" height="45" rx="8" fill="#ffffff" stroke="#1f3c88" stroke-width="2"/>
+          <text x="85" y="122" text-anchor="middle" font-size="13" fill="#1f3c88">RTL</text>
+
+          <rect x="145" y="95" width="90" height="45" rx="8" fill="#ffffff" stroke="#1f3c88" stroke-width="2"/>
+          <text x="190" y="122" text-anchor="middle" font-size="13" fill="#1f3c88">Synthesis</text>
+
+          <rect x="255" y="95" width="80" height="45" rx="8" fill="#ffffff" stroke="#1f3c88" stroke-width="2"/>
+          <text x="295" y="122" text-anchor="middle" font-size="13" fill="#1f3c88">STA</text>
+
+          <rect x="355" y="95" width="90" height="45" rx="8" fill="#ffffff" stroke="#1f3c88" stroke-width="2"/>
+          <text x="400" y="122" text-anchor="middle" font-size="13" fill="#1f3c88">P&R</text>
+
+          <line x1="125" y1="118" x2="145" y2="118" stroke="#2f80ed" stroke-width="3"/>
+          <line x1="235" y1="118" x2="255" y2="118" stroke="#2f80ed" stroke-width="3"/>
+          <line x1="335" y1="118" x2="355" y2="118" stroke="#2f80ed" stroke-width="3"/>
+
+          <rect x="95" y="175" width="130" height="45" rx="8" fill="#ffffff" stroke="#1f3c88" stroke-width="2"/>
+          <text x="160" y="203" text-anchor="middle" font-size="13" fill="#1f3c88">Verification</text>
+
+          <rect x="285" y="175" width="130" height="45" rx="8" fill="#ffffff" stroke="#1f3c88" stroke-width="2"/>
+          <text x="350" y="203" text-anchor="middle" font-size="13" fill="#1f3c88">DFT / Test</text>
+        </svg>
+        <h3>數位 IC EDA</h3>
+        <p>偏 RTL、合成、驗證、時序、布局繞線、DFT 與 tape-out signoff。</p>
+      </div>
+
+      <div class="visual-card">
+        <svg viewBox="0 0 520 300" role="img" aria-label="EDA analog IC workflow">
+          <rect x="20" y="30" width="480" height="220" rx="18" fill="#fff7d6" stroke="#f2c94c" stroke-width="3"/>
+          <text x="260" y="62" text-anchor="middle" font-size="20" font-weight="bold" fill="#8a5a00">EDA for Analog IC</text>
+
+          <rect x="45" y="95" width="90" height="45" rx="8" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <text x="90" y="122" text-anchor="middle" font-size="13" fill="#8a5a00">Schematic</text>
+
+          <rect x="155" y="95" width="90" height="45" rx="8" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <text x="200" y="122" text-anchor="middle" font-size="13" fill="#8a5a00">SPICE</text>
+
+          <rect x="265" y="95" width="80" height="45" rx="8" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <text x="305" y="122" text-anchor="middle" font-size="13" fill="#8a5a00">Layout</text>
+
+          <rect x="365" y="95" width="90" height="45" rx="8" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <text x="410" y="122" text-anchor="middle" font-size="13" fill="#8a5a00">PEX</text>
+
+          <line x1="135" y1="118" x2="155" y2="118" stroke="#b7791f" stroke-width="3"/>
+          <line x1="245" y1="118" x2="265" y2="118" stroke="#b7791f" stroke-width="3"/>
+          <line x1="345" y1="118" x2="365" y2="118" stroke="#b7791f" stroke-width="3"/>
+
+          <rect x="90" y="175" width="130" height="45" rx="8" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <text x="155" y="203" text-anchor="middle" font-size="13" fill="#8a5a00">DRC / LVS</text>
+
+          <rect x="295" y="175" width="140" height="45" rx="8" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+          <text x="365" y="203" text-anchor="middle" font-size="13" fill="#8a5a00">Post-Sim</text>
+        </svg>
+        <h3>類比 IC EDA</h3>
+        <p>偏電路圖、SPICE 模擬、版圖、DRC/LVS、寄生萃取與後模擬。</p>
+      </div>
+    </div>
+
+    <h3>EDA 技術在數位 IC 與類比 IC 的詳細比較</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>EDA 技術</th>
+          <th>在數位 IC 的用途</th>
+          <th>在類比 IC 的用途</th>
+          <th>差異重點</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Design Entry 設計輸入</td>
+          <td>主要輸入 Verilog、SystemVerilog、RTL code、constraint file。</td>
+          <td>主要輸入 schematic、transistor-level circuit、device size。</td>
+          <td>數位偏程式描述硬體；類比偏電晶體電路圖與元件尺寸。</td>
+        </tr>
+        <tr>
+          <td>Simulation 模擬</td>
+          <td>做 RTL simulation、gate-level simulation，確認邏輯功能正確。</td>
+          <td>做 DC、AC、Transient、Noise、Corner、Monte Carlo 模擬。</td>
+          <td>數位看 0/1 功能與時序；類比看波形、增益、頻寬、雜訊、穩定度。</td>
+        </tr>
+        <tr>
+          <td>Synthesis 邏輯合成</td>
+          <td>把 RTL 轉成 gate-level netlist，是數位 IC 核心流程。</td>
+          <td>一般類比 IC 不做 RTL synthesis。</td>
+          <td>Synthesis 幾乎是數位 IC 專用流程。</td>
+        </tr>
+        <tr>
+          <td>STA 靜態時序分析</td>
+          <td>檢查 setup time、hold time、clock path、timing closure。</td>
+          <td>類比 IC 通常不以 STA 為主要分析方式。</td>
+          <td>STA 是數位 IC 判斷速度是否達標的核心工具。</td>
+        </tr>
+        <tr>
+          <td>Place & Route 自動布局繞線</td>
+          <td>自動放置 standard cell，進行 clock tree synthesis 與 routing。</td>
+          <td>類比 layout 多半需要人工精修，強調 matching、symmetry、guard ring。</td>
+          <td>數位可高度自動化；類比較依賴工程師手動 layout 經驗。</td>
+        </tr>
+        <tr>
+          <td>DRC 設計規則檢查</td>
+          <td>檢查數位 layout 是否違反製程規則。</td>
+          <td>檢查類比 layout 是否違反製程規則。</td>
+          <td>兩者都需要，是 tape-out 前必要檢查。</td>
+        </tr>
+        <tr>
+          <td>LVS 版圖電路比對</td>
+          <td>確認 layout 產生的 netlist 與原本電路或 gate netlist 一致。</td>
+          <td>確認 layout 與 schematic 的 transistor connection 一致。</td>
+          <td>兩者都需要，但類比 LVS 常更重視 transistor-level connection。</td>
+        </tr>
+        <tr>
+          <td>PEX 寄生參數萃取</td>
+          <td>萃取 RC parasitic，用於 timing、power 與 signoff analysis。</td>
+          <td>萃取寄生電阻、電容，回到 Spectre 做 post-layout simulation。</td>
+          <td>數位偏時序收斂；類比偏波形、增益、相位裕度是否被寄生影響。</td>
+        </tr>
+        <tr>
+          <td>Power Analysis 功耗分析</td>
+          <td>分析 dynamic power、leakage power、clock power。</td>
+          <td>分析 bias current、static power、signal swing、效率與熱效應。</td>
+          <td>數位功耗和切換率、頻率、負載電容有關；類比功耗常和偏壓電流直接相關。</td>
+        </tr>
+        <tr>
+          <td>Formal Verification 形式驗證</td>
+          <td>用數學方法確認 RTL 與 netlist 邏輯等價。</td>
+          <td>類比 IC 較少使用傳統 formal equivalence。</td>
+          <td>Formal verification 主要偏數位 IC。</td>
+        </tr>
+        <tr>
+          <td>DFT / ATPG 測試設計</td>
+          <td>加入 scan chain、BIST、ATPG pattern，提升晶片可測試性。</td>
+          <td>類比也有測試需求，但方式常是量測電壓、電流、頻率、增益等規格。</td>
+          <td>DFT 是數位量產測試的重要流程；類比測試更偏規格量測。</td>
+        </tr>
+        <tr>
+          <td>Signoff 簽核</td>
+          <td>確認 timing、power、IR drop、EM、DRC、LVS 都通過。</td>
+          <td>確認 post-sim、corner、noise、stability、DRC、LVS 都通過。</td>
+          <td>兩者都需要 signoff，但檢查重點不同。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="conclusion">
+      總結：EDA 是 IC 設計的工具與自動化技術。若工具重點是 RTL、Synthesis、STA、P&R、DFT，
+      通常偏數位 IC；若工具重點是 Schematic、SPICE、Virtuoso Layout、DRC/LVS、PEX、Post-Sim，
+      通常偏類比 IC 或 Full-Custom IC。
+    </div>
+  </section>
+
+
+</main>
+
+<footer>
+  整理內容：數位 IC、類比 IC、VLSI 課程判斷與出路比較
+</footer>
+
+</body>
+</html>
